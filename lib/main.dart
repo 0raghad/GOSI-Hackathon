@@ -2,13 +2,6 @@ import 'package:flutter/material.dart';
 import 'Adminstrator_home_Page.dart';
 import 'sales_prediction_page.dart';
 import 'administrator_page.dart';
-import 'dart:developer';
-import 'package:animated_notch_bottom_bar/animated_notch_bottom_bar/animated_notch_bottom_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-
 
 void main() {
   runApp(MyApp());
