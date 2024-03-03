@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:charts_flutter/flutter.dart' as charts;
 
 class AdministratorHomePage extends StatelessWidget {
   final String userName = 'John Doe';
@@ -59,6 +60,16 @@ class AdministratorHomePage extends StatelessWidget {
                 SizedBox(width: 8.0),
                 _buildLegendItem('New Customer', Colors.grey),
               ],
+            ),
+            SizedBox(height: 16.0),
+            Expanded(
+              child: Container(
+                child: charts.BarChart(
+                  _createSampleData(),
+                  animate: true,
+                  barGroupingType: charts.BarGroupingType.stacked,
+                ),
+              ),
             ),
           ],
         ),
@@ -127,4 +138,58 @@ class AdministratorHomePage extends StatelessWidget {
       ],
     );
   }
+
+  List<charts.Series<OrdinalSales, String>> _createSampleData() {
+    final maleData = [
+      OrdinalSales('Jan', 5),
+      OrdinalSales('Feb', 10),
+      OrdinalSales('Mar', 8),
+      // Add more data points as needed
+    ];
+
+    final femaleData = [
+      OrdinalSales('Jan', 7),
+      OrdinalSales('Feb', 12),
+      OrdinalSales('Mar', 6),
+      // Add more data points as needed
+    ];
+
+    final newData = [
+      OrdinalSales('Jan', 3),
+      OrdinalSales('Feb', 5),
+      OrdinalSales('Mar', 4),
+      // Add more data points as needed
+    ];
+
+    return [
+      charts.Series<OrdinalSales, String>(
+        id: 'Male',
+        domainFn: (OrdinalSales sales, _) => sales.month,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        data: maleData,
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.red),
+      ),
+      charts.Series<OrdinalSales, String>(
+        id: 'Female',
+        domainFn: (OrdinalSales sales, _) => sales.month,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        data: femaleData,
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.purple),
+      ),
+      charts.Series<OrdinalSales, String>(
+        id: 'New Customer',
+        domainFn: (OrdinalSales sales, _) => sales.month,
+        measureFn: (OrdinalSales sales, _) => sales.sales,
+        data: newData,
+        colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.grey),
+      ),
+    ];
+  }
+}
+
+class OrdinalSales {
+  final String month;
+  final int sales;
+
+  OrdinalSales(this.month, this.sales);
 }
