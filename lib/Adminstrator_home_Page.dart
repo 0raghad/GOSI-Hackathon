@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 
 class AdministratorHomePage extends StatelessWidget {
-  final String userName = 'John Doe';
+  final String userName = 'Ali';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black12,
       appBar: AppBar(
         title: Text('Administrator Page'),
       ),
@@ -17,12 +18,12 @@ class AdministratorHomePage extends StatelessWidget {
           children: [
             Text(
               'Welcome back, $userName!',
-              style: TextStyle(fontSize: 24.0),
+              style: TextStyle(fontSize: 24.0, color: Colors.white),
             ),
             SizedBox(height: 8.0),
             Text(
               'Administrator',
-              style: TextStyle(fontSize: 16.0),
+              style: TextStyle(fontSize: 16.0, color: Colors.white),
             ),
             SizedBox(height: 16.0),
             Row(
@@ -31,7 +32,7 @@ class AdministratorHomePage extends StatelessWidget {
                   child: _buildDataBox(
                     title: 'New Subscriptions',
                     value: '10',
-                    color: Colors.red,
+                    color: Color.fromARGB(255, 236, 222, 246),
                     arrowIcon: Icons.arrow_downward,
                   ),
                 ),
@@ -40,7 +41,7 @@ class AdministratorHomePage extends StatelessWidget {
                   child: _buildDataBox(
                     title: 'Total Subscriptions',
                     value: '100',
-                    color: Colors.green,
+                    color: Color.fromARGB(59, 159, 236, 196),
                     arrowIcon: Icons.arrow_upward,
                   ),
                 ),
@@ -49,7 +50,7 @@ class AdministratorHomePage extends StatelessWidget {
             SizedBox(height: 16.0),
             Text(
               'Customer Growth',
-              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.white),
             ),
             SizedBox(height: 8.0),
             Row(
@@ -64,6 +65,10 @@ class AdministratorHomePage extends StatelessWidget {
             SizedBox(height: 16.0),
             Expanded(
               child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
                 child: charts.BarChart(
                   _createSampleData(),
                   animate: true,
@@ -86,7 +91,7 @@ class AdministratorHomePage extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        color: Colors.grey.shade200,
+        color: const Color.fromARGB(255, 255, 255, 255),
         borderRadius: BorderRadius.circular(10.0),
       ),
       child: Column(
@@ -102,7 +107,7 @@ class AdministratorHomePage extends StatelessWidget {
             child: Center(
               child: Icon(
                 arrowIcon,
-                color: Colors.white,
+                color: Color.fromARGB(255, 104, 56, 134),
                 size: 18.0,
               ),
             ),
@@ -134,7 +139,7 @@ class AdministratorHomePage extends StatelessWidget {
           ),
         ),
         SizedBox(width: 4.0),
-        Text(label),
+        Text(label, style: TextStyle(color: Colors.white))
       ],
     );
   }
@@ -165,7 +170,7 @@ class AdministratorHomePage extends StatelessWidget {
       charts.Series<OrdinalSales, String>(
         id: 'Male',
         domainFn: (OrdinalSales sales, _) => sales.month,
-        measureFn: (OrdinalSales sales, _) => sales.sales,
+       measureFn: (OrdinalSales sales, _) => sales.sales,
         data: maleData,
         colorFn: (_, __) => charts.ColorUtil.fromDartColor(Colors.red),
       ),

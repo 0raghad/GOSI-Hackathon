@@ -104,10 +104,10 @@ class AdministratorPage extends StatelessWidget {
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                    SvgPicture.asset(
-                      'assets/saudi_arabia_map.svg',
-                      height: 200.0,
-                    ),
+                 Image.asset(
+                  'assets/riyadh-map.png',
+                  height: 200.0,
+                ),
                     SizedBox(height: 16.0),
                     Text(
                       'Top Subscribers Locations',
@@ -135,7 +135,7 @@ class AdministratorPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            'Top District: Riyadh',
+                            'Top City: Riyadh',
                             style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(height: 8.0),
@@ -145,7 +145,7 @@ class AdministratorPage extends StatelessWidget {
                           ),
                           SizedBox(height: 16.0),
                           Text(
-                            'Other Districts:',
+                            'Other Cities:',
                             style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
                           ),
                           SizedBox(height: 8.0),
@@ -255,7 +255,7 @@ List<charts.Series<LinearSales, int>> _createSampleData() {
   return [
     charts.Series<LinearSales, int>(
       id: 'Earnings',
-      colorFn: (_, __) => charts.MaterialPalette.blue.shadeDefault,
+      colorFn: (_, __) => charts.Color.fromHex(code: '#9C3FE4'),
       domainFn: (LinearSales sales, _) => sales.year,
       measureFn: (LinearSales sales, _) => sales.sales,
       data: data,
