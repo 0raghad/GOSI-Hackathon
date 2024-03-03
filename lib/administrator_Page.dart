@@ -104,10 +104,6 @@ class AdministratorPage extends StatelessWidget {
                 padding: EdgeInsets.all(16.0),
                 child: Column(
                   children: [
-                 Image.asset(
-                  'assets/riyadh-map.png',
-                  height: 200.0,
-                ),
                     SizedBox(height: 16.0),
                     Text(
                       'Top Subscribers Locations',
